@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bufyvbsjblc6c"]
+[gd_scene load_steps=12 format=3 uid="uid://bufyvbsjblc6c"]
 
 [ext_resource type="Texture2D" uid="uid://csspl506h2sd" path="res://Sprites/Inventory/InventoryPanel.png" id="1_7ggh4"]
 [ext_resource type="Script" path="res://Inventory/Scripts/inventory.gd" id="1_l0rqj"]
@@ -9,6 +9,8 @@
 [ext_resource type="FontFile" uid="uid://diwksox8hqxqt" path="res://Fonts/m5x7.ttf" id="6_1nsf2"]
 [ext_resource type="Script" path="res://Inventory/Scripts/item_menu.gd" id="6_wqqev"]
 [ext_resource type="Script" path="res://Scripts/sound_player.gd" id="9_tdiep"]
+[ext_resource type="Script" path="res://Scripts/music_player.gd" id="10_qcdu1"]
+[ext_resource type="Script" path="res://Inventory/ItemsActions.gd" id="11_6n6mu"]
 
 [node name="Inventory" type="Node2D" node_paths=PackedStringArray("inventory_ui")]
 script = ExtResource("1_l0rqj")
@@ -26,7 +28,7 @@ offset_bottom = 40.0
 position = Vector2(229, 73)
 texture = ExtResource("1_7ggh4")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control/InventoryPanel" node_paths=PackedStringArray("inventory", "container", "canvas", "more_info_panel")]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control/InventoryPanel" node_paths=PackedStringArray("inventory", "container", "canvas", "more_info_panel", "items_actions")]
 offset_left = -22.0
 offset_top = -48.0
 offset_right = 22.0
@@ -38,6 +40,7 @@ inventory = NodePath("../../../..")
 container = NodePath("VBoxContainer")
 canvas = NodePath("../../..")
 more_info_panel = NodePath("../../InventoryMoreInfoPanel")
+items_actions = NodePath("../../../../ItemsActions")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/InventoryPanel/ScrollContainer"]
 layout_mode = 2
@@ -108,3 +111,10 @@ text = "drop"
 
 [node name="SoundPlayer" type="AudioStreamPlayer2D" parent="CanvasLayer"]
 script = ExtResource("9_tdiep")
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="CanvasLayer"]
+script = ExtResource("10_qcdu1")
+
+[node name="ItemsActions" type="Node" parent="." node_paths=PackedStringArray("inventory")]
+script = ExtResource("11_6n6mu")
+inventory = NodePath("..")

@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_oepuw")
-name = "Test"
-description = "This is an item."
+name = "CoolItem"
+description = "DONT USE IT!! DONT USE IT! DONT USE IT! DONT USE IT!"
+action = "start_music"
 quantity = 1

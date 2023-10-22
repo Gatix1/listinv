@@ -3,7 +3,8 @@ extends Node2D
 
 var inventory := [] # List to store inv items
 @export var inventory_ui : InventoryUI
-@onready var sound_player : SoundPlayer = $CanvasLayer/SoundPlayer  
+@onready var sound_player : SoundPlayer = $CanvasLayer/SoundPlayer 
+@onready var music_player : MusicPlayer = $CanvasLayer/MusicPlayer 
 
 @export var change_select_sound := 'Inventory/changeSelect.wav'
 @export var accept_select_sound := 'Inventory/acceptSelect.wav'

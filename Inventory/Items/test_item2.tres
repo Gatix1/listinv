@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_bf752")
-name = "Test2"
-description = "This is an item."
+name = "idk"
+description = "This does nothing!"
+action = ""
 quantity = 1

@@ -5,6 +5,7 @@ extends ScrollContainer
 @export var container : VBoxContainer
 @export var canvas : CanvasLayer
 @export var more_info_panel : InventoryMoreInfo
+@export var items_actions : ItemsActions
 
 var selected_item := 0
 
@@ -32,6 +33,9 @@ func _process(delta):
 				more_info_panel.visible = false
 				render_items()
 				render_selected()  
+			elif more_info_panel.selected_option == more_info_panel.options.USE:
+				if inventory.inventory[selected_item].action != "":
+					items_actions.call_deferred(inventory.inventory[selected_item].action)
 		else:
 			more_info_panel.visible = true
 		
