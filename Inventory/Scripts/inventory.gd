@@ -11,8 +11,8 @@ var inventory := [] # List to store inv items
 
 func _process(delta):
 	if Input.is_action_just_pressed("add_item"):
-		add_item(preload('res://Inventory/Items/test_item.tres'))
-		add_item(preload('res://Inventory/Items/test_item2.tres'))
+		add_item(load('res://Inventory/Items/test_item.tres'))
+		add_item(load('res://Inventory/Items/test_item2.tres'))
 		inventory_ui.render_items()
 
 #---Function adds a new item to the inventory---#
