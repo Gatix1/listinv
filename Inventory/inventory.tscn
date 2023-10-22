@@ -1,0 +1,110 @@
+[gd_scene load_steps=10 format=3 uid="uid://bufyvbsjblc6c"]
+
+[ext_resource type="Texture2D" uid="uid://csspl506h2sd" path="res://Sprites/Inventory/InventoryPanel.png" id="1_7ggh4"]
+[ext_resource type="Script" path="res://Inventory/Scripts/inventory.gd" id="1_l0rqj"]
+[ext_resource type="FontFile" uid="uid://b3k0jqn4k72bj" path="res://Fonts/m3x6.ttf" id="2_ehdmh"]
+[ext_resource type="PackedScene" uid="uid://5aeiskvil2g8" path="res://Inventory/inventory_ui_item.tscn" id="2_qe4rf"]
+[ext_resource type="Script" path="res://Inventory/Scripts/inventory_ui.gd" id="3_0mfuy"]
+[ext_resource type="Texture2D" uid="uid://cex0u2w8scmh" path="res://Sprites/Inventory/InventoryMoreInfoPanel.png" id="5_bdt3f"]
+[ext_resource type="FontFile" uid="uid://diwksox8hqxqt" path="res://Fonts/m5x7.ttf" id="6_1nsf2"]
+[ext_resource type="Script" path="res://Inventory/Scripts/item_menu.gd" id="6_wqqev"]
+[ext_resource type="Script" path="res://Scripts/sound_player.gd" id="9_tdiep"]
+
+[node name="Inventory" type="Node2D" node_paths=PackedStringArray("inventory_ui")]
+script = ExtResource("1_l0rqj")
+inventory_ui = NodePath("CanvasLayer/Control/InventoryPanel/ScrollContainer")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="InventoryPanel" type="Sprite2D" parent="CanvasLayer/Control"]
+position = Vector2(229, 73)
+texture = ExtResource("1_7ggh4")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control/InventoryPanel" node_paths=PackedStringArray("inventory", "container", "canvas", "more_info_panel")]
+offset_left = -22.0
+offset_top = -48.0
+offset_right = 22.0
+offset_bottom = 48.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+script = ExtResource("3_0mfuy")
+inventory = NodePath("../../../..")
+container = NodePath("VBoxContainer")
+canvas = NodePath("../../..")
+more_info_panel = NodePath("../../InventoryMoreInfoPanel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/InventoryPanel/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="Control" parent="CanvasLayer/Control/InventoryPanel/ScrollContainer/VBoxContainer" instance=ExtResource("2_qe4rf")]
+layout_mode = 2
+item_name = "Test"
+item_count = 1
+
+[node name="Control2" parent="CanvasLayer/Control/InventoryPanel/ScrollContainer/VBoxContainer" instance=ExtResource("2_qe4rf")]
+layout_mode = 2
+item_name = "Test2"
+item_count = 3
+
+[node name="Control3" parent="CanvasLayer/Control/InventoryPanel/ScrollContainer/VBoxContainer" instance=ExtResource("2_qe4rf")]
+layout_mode = 2
+item_name = "HAHA"
+
+[node name="Control4" parent="CanvasLayer/Control/InventoryPanel/ScrollContainer/VBoxContainer" instance=ExtResource("2_qe4rf")]
+layout_mode = 2
+item_name = "idk"
+item_count = 69
+
+[node name="InventoryMoreInfoPanel" type="Sprite2D" parent="CanvasLayer/Control" node_paths=PackedStringArray("inventory")]
+position = Vector2(183, 51)
+texture = ExtResource("5_bdt3f")
+script = ExtResource("6_wqqev")
+inventory = NodePath("../../..")
+
+[node name="ItemNameLabel" type="RichTextLabel" parent="CanvasLayer/Control/InventoryMoreInfoPanel"]
+offset_left = -22.0
+offset_top = -26.0
+offset_right = 22.0
+offset_bottom = -12.0
+theme_override_fonts/normal_font = ExtResource("6_1nsf2")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[center]Test Item"
+
+[node name="ItemDescLabel" type="RichTextLabel" parent="CanvasLayer/Control/InventoryMoreInfoPanel"]
+offset_left = -21.0
+offset_top = -15.0
+offset_right = 21.0
+offset_bottom = 11.0
+theme_override_fonts/normal_font = ExtResource("2_ehdmh")
+theme_override_font_sizes/normal_font_size = 7
+bbcode_enabled = true
+text = "[center]Description of the object!!!! Some random text right here!"
+
+[node name="UseLabel" type="Label" parent="CanvasLayer/Control/InventoryMoreInfoPanel"]
+offset_left = -18.0
+offset_top = 13.0
+offset_right = -2.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("6_1nsf2")
+theme_override_font_sizes/font_size = 12
+text = "use"
+
+[node name="DropLabel" type="Label" parent="CanvasLayer/Control/InventoryMoreInfoPanel"]
+offset_left = 1.0
+offset_top = 13.0
+offset_right = 19.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("6_1nsf2")
+theme_override_font_sizes/font_size = 12
+text = "drop"
+
+[node name="SoundPlayer" type="AudioStreamPlayer2D" parent="CanvasLayer"]
+script = ExtResource("9_tdiep")

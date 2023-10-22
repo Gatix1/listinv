@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://5aeiskvil2g8"]
+
+[ext_resource type="Script" path="res://Inventory/Scripts/inventory_ui_item.gd" id="1_01n4j"]
+[ext_resource type="FontFile" uid="uid://b3k0jqn4k72bj" path="res://Fonts/m3x6.ttf" id="2_j7oxy"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 44.0
+offset_bottom = 13.0
+script = ExtResource("1_01n4j")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 13.0
+theme_override_fonts/font = ExtResource("2_j7oxy")
+theme_override_font_sizes/font_size = 12
+text = "[x2] Pistol"
+horizontal_alignment = 1
+vertical_alignment = 1
