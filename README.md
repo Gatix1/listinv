@@ -13,3 +13,5 @@ Before i decided to create this inventory system, i was looking for some similar
 - To remove an item you call inventory.remove_item("Loaded resource");
 - By default inventory opens on "E", the selection of item/option is setted to ui_left/ui_right/ui_down/ui_up, accept/cancel to ui_accept/ui_cancel; P.S: You can change it in inventory_ui.gd & item_menu.gd
 - SoundPlayer and MusicPlayer are the AudioStreamPlayer2D scripts to play the needed audio in one line;
+
+(I added a line of code that adds 2 test items to your inventory when you press A, so you can use it to test the system)
