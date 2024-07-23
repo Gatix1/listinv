@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3bqxpr6gr7xj"]
+
+[ext_resource type="PackedScene" uid="uid://bufyvbsjblc6c" path="res://Inventory/inventory.tscn" id="1_m43pg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tye1v"]
+bg_color = Color(0.764706, 0.737255, 0.945098, 1)
+
+[node name="ListInv-Demo" type="Node2D"]
+
+[node name="Inventory" parent="." instance=ExtResource("1_m43pg")]
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 259.0
+offset_bottom = 148.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tye1v")

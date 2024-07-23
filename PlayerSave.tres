@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="PlayerData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Resources/PlayerData.gd" id="1_mtflf"]
+
+[resource]
+script = ExtResource("1_mtflf")
+inventory = [{
+"action": "",
+"description": "This does nothing!",
+"name": "idk",
+"quantity": 4
+}, {
+"action": "start_music",
+"description": "DONT USE IT!! DONT USE IT! DONT USE IT! DONT USE IT!",
+"name": "CoolItem",
+"quantity": 2
+}]
